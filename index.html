@@ -280,34 +280,28 @@
             display: flex;
             align-items: center;
             overflow: hidden;
-            z-index: 1;
         }
 
         .hero-bg {
             position: absolute;
             inset: 0;
             background: var(--gradient-hero);
-            z-index: 1;
         }
-        
+
         .hero-bg::after {
             content: '';
             position: absolute;
             inset: 0;
             background: rgba(0, 0, 0, 0.2);
-            z-index: 3;
         }
 
-        .hero-bg-img {
-            position: fixed; /* STATIC PARALLAX EFFECT */
-            top: 0;
-            left: 0;
+        .hero-bg img {
             width: 100%;
-            height: 100vh;
+            height: 100%;
             object-fit: cover;
             mix-blend-mode: overlay;
             opacity: 0.3;
-            z-index: 2;
+            will-change: transform;
         }
 
         .floating-element {
@@ -414,7 +408,6 @@
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 2s infinite;
-            z-index: 10;
         }
 
         .scroll-mouse {
@@ -437,17 +430,6 @@
         /* Section Styles */
         .section {
             padding: 5rem 0;
-            position: relative; 
-            z-index: 5; 
-            background-color: hsl(var(--background)); 
-        }
-        
-        .about {
-            background: hsl(var(--muted) / 0.3);
-        }
-
-        .contact {
-             background: hsl(var(--muted) / 0.3);
         }
 
         .section-header {
@@ -546,6 +528,9 @@
         }
 
         /* About Section */
+        .about {
+            background: hsl(var(--muted) / 0.3);
+        }
 
         .stats-grid {
             display: grid;
@@ -840,7 +825,9 @@
         }
 
         /* Contact Section */
-        
+        .contact {
+            background: hsl(var(--muted) / 0.3);
+        }
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -994,8 +981,6 @@
             background: hsl(var(--foreground));
             color: white;
             padding: 3rem 0 1rem;
-            position: relative;
-            z-index: 10;
         }
         .footer-content {
             display: grid;
@@ -1079,13 +1064,50 @@
         @media (max-width: 1023px) {
             .about-content, .contact-content, .form-row { grid-template-columns: 1fr; gap: 2rem; }
         }
+        
+        /* --- Optimizaciones Móviles Adicionales --- */
         @media (max-width: 768px) {
             .header, .service-card, .testimonial-card, .contact-info-card { backdrop-filter: none; }
             .section { padding: 4rem 0; }
+            
+            /* Carrusel Horizontal para Secciones de Tarjetas */
+            .services-grid, .testimonials-grid, .cases-grid {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                padding-bottom: 1.5rem; /* Espacio para la barra de scroll */
+                gap: 1.5rem;
+            }
+            .services-grid > .service-card,
+            .testimonials-grid > .testimonial-card,
+            .cases-grid > .case-card {
+                flex: 0 0 85%; /* Cada tarjeta ocupa el 85% del ancho */
+                scroll-snap-align: start;
+            }
+
+            /* Estilo sutil para la barra de scroll */
+            .services-grid::-webkit-scrollbar,
+            .testimonials-grid::-webkit-scrollbar,
+            .cases-grid::-webkit-scrollbar {
+                height: 6px;
+            }
+            .services-grid::-webkit-scrollbar-thumb,
+            .testimonials-grid::-webkit-scrollbar-thumb,
+            .cases-grid::-webkit-scrollbar-thumb {
+                background: hsl(var(--border));
+                border-radius: 3px;
+            }
         }
+
         @media (max-width: 639px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .advantages-grid { grid-template-columns: 1fr; }
+            /* Cuadrícula de 2x2 para ventajas */
+            .advantages-grid { 
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .advantage-card { padding: 1rem; }
+            
             .hero-title { font-size: 2.5rem; }
             .section-title { font-size: 2rem; }
         }
@@ -1209,8 +1231,7 @@
     <main>
         <!-- Hero Section -->
         <section id="inicio" class="hero">
-            <div class="hero-bg"></div>
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop&crop=center" class="hero-bg-img" alt="Agência de marketing digital Impulso Visual trabalhando em estratégias de tráfego pago.">
+            <div class="hero-bg"><div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.2);"></div><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop&crop=center" alt="Agência de marketing digital Impulso Visual trabalhando em estratégias de tráfego pago." loading="lazy"></div>
             <div class="floating-element floating-1"></div><div class="floating-element floating-2"></div><div class="floating-element floating-3"></div>
             <div class="container">
                 <div class="hero-content">
@@ -1445,6 +1466,7 @@
 
             // Lógica de Scroll con requestAnimationFrame
             const header = document.querySelector('.header');
+            const heroBgImg = document.querySelector('.hero-bg img');
             let lastScrollTop = 0;
             let ticking = false;
 
@@ -1453,6 +1475,10 @@
 
                 if (!ticking) {
                     window.requestAnimationFrame(function() {
+                        if (heroBgImg && scrollTop < window.innerHeight) {
+                            heroBgImg.style.transform = `translateY(${scrollTop * 0.4}px)`;
+                        }
+
                         if (scrollTop > lastScrollTop && scrollTop > header.offsetHeight) {
                             header.classList.add('header-hidden');
                         } else {
