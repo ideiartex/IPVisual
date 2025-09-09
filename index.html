@@ -66,7 +66,7 @@
         }
 
         html, body {
-            overflow-x: hidden; /* Garantía global para evitar scroll horizontal */
+            overflow-x: hidden;
         }
         
         body {
@@ -479,10 +479,7 @@
         }
 
         .service-card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+            display: block; /* Default for desktop */
         }
 
         .service-icon {
@@ -1035,18 +1032,25 @@
         }
         
         /* --- Estilos de Animación de Entrada --- */
-        .fade-in-up, .slide-in-left, .slide-in-right, .service-card {
+        .fade-in-up, .slide-in-left, .slide-in-right {
             opacity: 0;
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .fade-in-up { transform: translateY(30px); }
         .slide-in-left { transform: translateX(-50px); }
         .slide-in-right { transform: translateX(50px); }
-        .service-card:nth-child(odd) { transform: translateX(-50px); }
-        .service-card:nth-child(even) { transform: translateX(50px); }
-        .fade-in-up.is-visible, .slide-in-left.is-visible, .slide-in-right.is-visible, .service-card.is-visible {
+        
+        .fade-in-up.is-visible, .slide-in-left.is-visible, .slide-in-right.is-visible {
             opacity: 1;
             transform: translate(0, 0);
+        }
+
+        .service-card {
+            opacity: 0;
+            transition: opacity 0.6s ease-out; /* Removido transform aquí */
+        }
+        .service-card.is-visible {
+            opacity: 1;
         }
 
         /* Responsive Design */
@@ -1072,14 +1076,12 @@
             .about-content, .contact-content, .form-row { grid-template-columns: 1fr; gap: 2rem; }
         }
         
-        /* --- Optimizaciones Móviles Adicionales --- */
         @media (max-width: 768px) {
             .header, .service-card, .testimonial-card, .contact-info-card { backdrop-filter: none; }
             .section { padding: 4rem 0; }
             .floating-element { display: none; }
             .hero { min-height: 90vh; }
             
-            /* Carrusel Horizontal para Secciones de Tarjetas */
             .services-grid, .testimonials-grid, .cases-grid {
                 display: flex;
                 overflow-x: auto;
@@ -1092,6 +1094,7 @@
             .cases-grid > .case-card {
                 flex: 0 0 85%;
                 scroll-snap-align: start;
+                transform: none !important; /* Desactiva la animación de entrada conflictiva */
             }
             .services-grid::-webkit-scrollbar, .testimonials-grid::-webkit-scrollbar, .cases-grid::-webkit-scrollbar {
                 height: 6px;
@@ -1101,7 +1104,6 @@
                 border-radius: 3px;
             }
 
-            /* Alineación icono y título en servicios */
             .service-card-header {
                 display: flex;
                 align-items: center;
@@ -1332,7 +1334,7 @@
             <div class="container">
                 <div class="section-header fade-in-up"><h2 class="section-title">Cases de <span class="gradient-text">Sucesso</span></h2><p class="section-description">Veja como já transformamos negócios de diversos segmentos com nossas estratégias de marketing digital.</p></div>
                 <div class="testimonials-grid">
-                    <div class="testimonial-card"><svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 17h3l2-4V7h-6v6h3M6 17h3l2-4V7H5v6h3l-2 4z"/></svg><p class="testimonial-text">"Desde que começamos a trabalhar com a Impulso Visual, nossos pedidos online aumentaram incrivelmente. A estratégia de tráfego local foi um divisor de águas para nós!"</p><div class="stars"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div><div class="testimonial-author"><div class="author-info"><img src="https://i.imgur.com/cLxLQUA.png" alt="Foto de Karla Rodríguez, cliente da Pizzaria Elpis" class="author-avatar"><div><div class="author-name">Karla Rodríguez</div><div class="author-company">Pizzaria Elpis</div></div></div><div class="testimonial-result">+40% Pedidos Online</div></div></div>
+                    <div class="testimonial-card"><svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 17h3l2-4V7h-6v6h3M6 17h3l2-4V7H5v6h3l-2 4z"/></svg><p class="testimonial-text">"Desde que começamos a trabalhar com a Impulso Visual, nossos pedidos online aumentaram incrivelmente. A estratégia de tráfego local foi um divisor de águas para nós!"</p><div class="stars"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div><div class="testimonial-author"><div class="author-info"><img src="https://i.imgur.com/lwRVl8w.png" alt="Foto da cliente da Pizzaria Elpis" class="author-avatar"><div><div class="author-name">Karla Rodríguez</div><div class="author-company">Pizzaria Elpis</div></div></div><div class="testimonial-result">+40% Pedidos Online</div></div></div>
                     <div class="testimonial-card"><svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 17h3l2-4V7h-6v6h3M6 17h3l2-4V7H5v6h3l-2 4z"/></svg><p class="testimonial-text">"A agenda da barbearia está sempre cheia! O trabalho de gestão de tráfego e agendamento online superou todas as nossas expectativas. Agora somos referência no bairro."</p><div class="stars"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div><div class="testimonial-author"><div class="author-info"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Foto de Franyer Jesús, cliente da Noah Barbershop" class="author-avatar"><div><div class="author-name">Franyer Jesús</div><div class="author-company">Noah Barbershop</div></div></div><div class="testimonial-result">+70% Novos Clientes</div></div></div>
                     <div class="testimonial-card"><svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 17h3l2-4V7h-6v6h3M6 17h3l2-4V7H5v6h3l-2 4z"/></svg><p class="testimonial-text">"Construir uma presença online séria e profissional era meu objetivo. A equipe da Impulso Visual não só criou um site incrível, mas também aumentou o número de consultas agendadas."</p><div class="stars"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div><div class="testimonial-author"><div class="author-info"><img src="https://i.imgur.com/NZeGTDd.png" alt="Foto do Dr. Nelson Machin, Neurocirurgião" class="author-avatar"><div><div class="author-name">Dr. Nelson Machin</div><div class="author-company">Neurocirurgião</div></div></div><div class="testimonial-result">+150% Consultas</div></div></div>
                 </div>
@@ -1668,7 +1670,7 @@
 
                 window.addEventListener('resize', () => {
                     if (window.innerWidth < 768) {
-                        stopScrolling(); // Clear previous interval
+                        stopScrolling();
                         startScrolling();
                     } else {
                         stopScrolling();
