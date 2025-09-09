@@ -1070,6 +1070,8 @@
             .header, .service-card, .testimonial-card, .contact-info-card { backdrop-filter: none; }
             .section { padding: 4rem 0; }
             
+            .hero { min-height: 90vh; }
+            
             /* Carrusel Horizontal para Secciones de Tarjetas */
             .services-grid, .testimonials-grid, .cases-grid {
                 display: flex;
@@ -1108,7 +1110,15 @@
             }
             .advantage-card { padding: 1rem; }
             
-            .hero-title { font-size: 2.5rem; }
+            .hero-title { 
+                font-size: 2.25rem;
+                margin-bottom: 1rem;
+            }
+            .hero-description {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+            .hero-stats { display: none; } /* Ocultar estadísticas en móviles */
             .section-title { font-size: 2rem; }
         }
         
@@ -1304,13 +1314,13 @@
         <section id="cases" class="section">
             <div class="container">
                 <div class="section-header fade-in-up"><h2 class="section-title">Cases de <span class="gradient-text">Sucesso</span></h2><p class="section-description">Veja como já transformamos negócios de diversos segmentos com nossas estratégias de marketing digital.</p></div>
-                <div class="testimonials-grid fade-in-up">
+                <div class="testimonials-grid">
                     <div class="testimonial-card"><svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 17h3l2-4V7h-6v6h3M6 17h3l2-4V7H5v6h3l-2 4z"/></svg><p class="testimonial-text">"Desde que começamos a trabalhar com a Impulso Visual, nossos pedidos online aumentaram incrivelmente. A estratégia de tráfego local foi um divisor de águas para nós!"</p><div class="stars"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div><div class="testimonial-author"><div class="author-info"><img src="https://i.imgur.com/cLxLQUA.png" alt="Foto de Karla Rodríguez, cliente da Pizzaria Elpis" class="author-avatar"><div><div class="author-name">Karla Rodríguez</div><div class="author-company">Pizzaria Elpis</div></div></div><div class="testimonial-result">+40% Pedidos Online</div></div></div>
                     <div class="testimonial-card"><svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 17h3l2-4V7h-6v6h3M6 17h3l2-4V7H5v6h3l-2 4z"/></svg><p class="testimonial-text">"A agenda da barbearia está sempre cheia! O trabalho de gestão de tráfego e agendamento online superou todas as nossas expectativas. Agora somos referência no bairro."</p><div class="stars"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div><div class="testimonial-author"><div class="author-info"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Foto de Franyer Jesús, cliente da Noah Barbershop" class="author-avatar"><div><div class="author-name">Franyer Jesús</div><div class="author-company">Noah Barbershop</div></div></div><div class="testimonial-result">+70% Novos Clientes</div></div></div>
                     <div class="testimonial-card"><svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 17h3l2-4V7h-6v6h3M6 17h3l2-4V7H5v6h3l-2 4z"/></svg><p class="testimonial-text">"Construir uma presença online séria e profissional era meu objetivo. A equipe da Impulso Visual não só criou um site incrível, mas também aumentou o número de consultas agendadas."</p><div class="stars"><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg><svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg></div><div class="testimonial-author"><div class="author-info"><img src="https://i.imgur.com/NZeGTDd.png" alt="Foto do Dr. Nelson Machin, Neurocirurgião" class="author-avatar"><div><div class="author-name">Dr. Nelson Machin</div><div class="author-company">Neurocirurgião</div></div></div><div class="testimonial-result">+150% Consultas</div></div></div>
                 </div>
                 <div style="margin-bottom: 4rem;"><h3 style="font-size: 1.875rem; font-weight: 700; text-align: center; margin-bottom: 3rem;" class="fade-in-up">Resultados Detalhados</h3>
-                    <div class="cases-grid fade-in-up">
+                    <div class="cases-grid">
                         <div class="case-card"><h4 class="case-title">Pizzaria Elpis</h4><p class="case-description">Aumentamos o volume de pedidos online em 40% com campanhas de tráfego local e otimização para delivery.</p><div class="case-metrics"><div class="metric-item"><span class="metric-label">ROI</span><span class="metric-value">350%</span></div><div class="metric-item"><span class="metric-label">Pedidos Online</span><span class="metric-value">+40%</span></div><div class="metric-item"><span class="metric-label">Custo por Pedido</span><span class="metric-value">-25%</span></div></div><div class="case-period">Período: 4 meses</div></div>
                         <div class="case-card"><h4 class="case-title">Noah Barbershop</h4><p class="case-description">Geramos um aumento de 70% em novos clientes através de agendamentos online e campanhas de visibilidade local.</p><div class="case-metrics"><div class="metric-item"><span class="metric-label">Agendamentos Online</span><span class="metric-value">+120%</span></div><div class="metric-item"><span class="metric-label">Novos Clientes</span><span class="metric-value">+70%</span></div><div class="metric-item"><span class="metric-label">CAC</span><span class="metric-value">-30%</span></div></div><div class="case-period">Período: 6 meses</div></div>
                         <div class="case-card"><h4 class="case-title">Dr. Nelson Machin - Neurocirurgia</h4><p class="case-description">Fortalecemos a autoridade online e aumentamos em 150% as consultas agendadas via canais digitais.</p><div class="case-metrics"><div class="metric-item"><span class="metric-label">Novos Pacientes</span><span class="metric-value">+80%</span></div><div class="metric-item"><span class="metric-label">Visibilidade Online</span><span class="metric-value">+200%</span></div><div class="metric-item"><span class="metric-label">Consultas Agendadas</span><span class="metric-value">+150%</span></div></div><div class="case-period">Período: 8 meses</div></div>
@@ -1603,6 +1613,46 @@
                     }, 4000);
                 });
             });
+
+            // Carrusel Automático
+            function setupAutoCarousel(selector) {
+                const carousel = document.querySelector(selector);
+                if (!carousel) return;
+
+                let scrollInterval;
+
+                const startScrolling = () => {
+                    scrollInterval = setInterval(() => {
+                        if (window.innerWidth >= 768) return; // Solo en móvil
+                        
+                        const firstCard = carousel.querySelector(':first-child');
+                        if (!firstCard) return;
+
+                        const scrollAmount = firstCard.offsetWidth + parseFloat(window.getComputedStyle(carousel).gap);
+
+                        if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 20) {
+                            carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                        } else {
+                            carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                        }
+                    }, 5000); // Cambia cada 5 segundos
+                };
+
+                const stopScrolling = () => {
+                    clearInterval(scrollInterval);
+                };
+
+                carousel.addEventListener('mouseenter', stopScrolling);
+                carousel.addEventListener('touchstart', stopScrolling);
+                carousel.addEventListener('mouseleave', startScrolling);
+                carousel.addEventListener('touchend', startScrolling);
+
+                startScrolling();
+            }
+
+            setupAutoCarousel('.services-grid');
+            setupAutoCarousel('.testimonials-grid');
+            setupAutoCarousel('.cases-grid');
         });
     </script>
 </body>
