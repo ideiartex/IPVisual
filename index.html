@@ -65,9 +65,8 @@
             --shadow-soft: 0 10px 30px -5px hsl(220 8.9% 46.1% / 0.1);
         }
 
-        html {
-            scroll-padding-top: 64px;
-            scroll-behavior: smooth;
+        html, body {
+            overflow-x: hidden; /* Garantía global para evitar scroll horizontal */
         }
         
         body {
@@ -1069,7 +1068,7 @@
         @media (max-width: 768px) {
             .header, .service-card, .testimonial-card, .contact-info-card { backdrop-filter: none; }
             .section { padding: 4rem 0; }
-            
+            .floating-element { display: none; }
             .hero { min-height: 90vh; }
             
             /* Carrusel Horizontal para Secciones de Tarjetas */
@@ -1077,17 +1076,16 @@
                 display: flex;
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
-                padding-bottom: 1.5rem; /* Espacio para la barra de scroll */
+                padding-bottom: 1.5rem;
                 gap: 1.5rem;
             }
             .services-grid > .service-card,
             .testimonials-grid > .testimonial-card,
             .cases-grid > .case-card {
-                flex: 0 0 85%; /* Cada tarjeta ocupa el 85% del ancho */
+                flex: 0 0 85%;
                 scroll-snap-align: start;
             }
 
-            /* Estilo sutil para la barra de scroll */
             .services-grid::-webkit-scrollbar,
             .testimonials-grid::-webkit-scrollbar,
             .cases-grid::-webkit-scrollbar {
@@ -1103,7 +1101,6 @@
 
         @media (max-width: 639px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            /* Cuadrícula de 2x2 para ventajas */
             .advantages-grid { 
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
@@ -1118,7 +1115,7 @@
                 font-size: 1.1rem;
                 margin-bottom: 1.5rem;
             }
-            .hero-stats { display: none; } /* Ocultar estadísticas en móviles */
+            .hero-stats { display: none; }
             .section-title { font-size: 2rem; }
         }
         
@@ -1622,9 +1619,11 @@
                 let scrollInterval;
 
                 const startScrolling = () => {
+                    if (window.innerWidth >= 768) {
+                        stopScrolling();
+                        return;
+                    }
                     scrollInterval = setInterval(() => {
-                        if (window.innerWidth >= 768) return; // Solo en móvil
-                        
                         const firstCard = carousel.querySelector(':first-child');
                         if (!firstCard) return;
 
@@ -1635,7 +1634,7 @@
                         } else {
                             carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                         }
-                    }, 5000); // Cambia cada 5 segundos
+                    }, 5000);
                 };
 
                 const stopScrolling = () => {
@@ -1646,6 +1645,15 @@
                 carousel.addEventListener('touchstart', stopScrolling);
                 carousel.addEventListener('mouseleave', startScrolling);
                 carousel.addEventListener('touchend', startScrolling);
+
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth < 768) {
+                        stopScrolling(); // Clear previous interval
+                        startScrolling();
+                    } else {
+                        stopScrolling();
+                    }
+                });
 
                 startScrolling();
             }
