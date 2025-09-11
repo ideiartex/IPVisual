@@ -3,21 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO y Meta Tags Principales -->
     <title>Impulso Visual - Especialista em Tráfego Pago | Aumente suas Vendas</title>
-    <meta name="description" content="Agência especializada em tráfego pago, criação de sites e campanhas que realmente convertem. Maximize seu ROI com nossa expertise em métricas e comunicação visual.">
-    <meta name="keywords" content="tráfego pago, google ads, facebook ads, marketing digital, criação de sites, otimização de campanhas, ROI, conversões, crm">
+    <meta name="description" content="Transforme cliques em clientes! A Impulso Visual é uma agência especialista em tráfego pago e criação de sites focados em conversão. Aumente suas vendas e maximize seu ROI.">
+    <meta name="keywords" content="tráfego pago, google ads, facebook ads, marketing digital, criação de sites, otimização de campanhas, ROI, conversões, social midia">
     <link rel="canonical" href="https://agencia-digital.com.br">
-    
-    <!-- Librería de Font Awesome para el ícono -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Impulso Visual - Especialista em Tráfego Pago">
-    <meta property="og:description" content="Transforme visitantes em clientes com nossa expertise em tráfego pago e marketing digital.">
+
+    <!-- Favicon y Logo para Navegadores -->
+    <link rel="icon" href="https://i.imgur.com/LpWqnv3.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://i.imgur.com/LpWqnv3.png">
+
+    <!-- Open Graph para Redes Sociales (Facebook, WhatsApp, LinkedIn, etc.) -->
+    <meta property="og:title" content="Impulso Visual - Especialista em Tráfego Pago | Aumente suas Vendas">
+    <meta property="og:description" content="Transforme cliques em clientes! Agência especialista em tráfego pago e criação de sites focados em conversão.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://agencia-digital.com.br">
+    <meta property="og:site_name" content="Impulso Visual">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop&crop=center">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Agência de Marketing Digital focada em resultados e tráfego pago.">
+
+    <!-- Twitter Cards para Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Impulso Visual - Especialista em Tráfego Pago | Aumente suas Vendas">
+    <meta name="twitter:description" content="Transforme cliques em clientes! Agência especialista em tráfego pago e criação de sites focados em conversão.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop&crop=center">
+    <meta name="twitter:image:alt" content="Agência de Marketing Digital focada em resultados e tráfego pago.">
+
+    <!-- Librería de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <!-- JSON-LD Structured Data -->
+    <!-- JSON-LD Structured Data (con logo para Google) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -25,6 +43,10 @@
       "name": "Impulso Visual",
       "description": "Agência especializada em tráfego pago e marketing digital",
       "url": "https://agencia-digital.com.br",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://i.imgur.com/LpWqnv3.png"
+      },
       "telephone": "(41) 98783-8428",
       "email": "contacto@impulsovisual.space",
       "address": {
@@ -1101,8 +1123,7 @@
                 background: hsl(var(--border));
                 border-radius: 3px;
             }
-
-            /* --- Estilos del Acordeón de Servicios --- */
+            
             .services-grid {
                 display: flex;
                 flex-direction: column;
@@ -1110,6 +1131,7 @@
             }
             .service-card {
                 padding: 1rem;
+                transform: none !important;
             }
             .service-card-header {
                 display: flex;
@@ -1129,7 +1151,6 @@
             }
             .service-card.active .service-card-header::after {
                 content: '−';
-                transform: rotate(180deg);
             }
             .service-card .service-icon {
                 margin-bottom: 0;
@@ -1146,7 +1167,7 @@
                 transition: max-height 0.4s ease-out;
             }
             .service-card.active .service-card-content {
-                max-height: 500px; /* Suficientemente grande para el contenido */
+                max-height: 500px;
                 padding-top: 1rem;
             }
         }
@@ -1684,7 +1705,7 @@
                     });
                 });
             }
-
+            
             // Carrusel Automático para Testimonios y Cases
             function setupAutoCarousel(selector) {
                 const carousel = document.querySelector(selector);
